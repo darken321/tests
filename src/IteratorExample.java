@@ -3,7 +3,7 @@ import java.util.*;
 public class IteratorExample {
     public static void main(String[] args) {
 
-        final int NUM = 999;
+        final int NUM = 888;
         List<Integer> list = new LinkedList<>();
         Collections.addAll(list, 11, 22, 33, 44, 55, 66, 77);
         //Iterator<Integer> iterator = list.iterator();
