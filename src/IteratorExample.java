@@ -22,6 +22,8 @@ public class IteratorExample {
         //System.out.println("лист на автомате " + list);
         printList(list);
         System.out.println("Индекс предыдущего элемента " + iterator.previousIndex());
+        System.out.println("вывод итератором");
+        printIterator(iterator);
 
         //remove
         System.out.println("Удаляю часть элементов - Итерация назад");
@@ -33,18 +35,19 @@ public class IteratorExample {
             }
         }
         printList(list);
+        System.out.println("вывод итератором");
+        printIterator(iterator);
 
         //set
         System.out.println("Заменяю " + NUM + " на " + (NUM - 111) + " - Итерация вперед");
         while (iterator.hasNext()) {
             int element = iterator.next();
-            if (element == 999) {
+            if (element == NUM) {
                 System.out.println(element + " remove -");
                 iterator.set(NUM - 111);
             }
         }
         printList(list);
-
         //forEachRemaining(Consumer<? super E> action)
         /*Выполняет данное действие для каждого оставшегося элемента
          до тех пор, пока все элементы не будут обработаны
@@ -55,6 +58,19 @@ public class IteratorExample {
         for (Integer integer : list) {
             System.out.print(integer + " ");
         }
+        System.out.println();
+        System.out.println();
+    }
+    private static void printIterator(ListIterator<Integer> iterator) {
+        // откатываю каретку назад в начало
+        while (iterator.hasPrevious()){
+            iterator.previous();
+        }
+        while (iterator.hasNext()){
+            int item = iterator.next();
+            System.out.print(item + " ");
+        }
+        //каретка остается в конце!!
         System.out.println();
         System.out.println();
     }
