@@ -5,9 +5,11 @@ public class ComparatorExample {
         List<String> list = new ArrayList<>();
         Collections.addAll(list, "Pasha", "Sveta", "Olya", "Lena", "Masha", "Alla", "Dima");
         System.out.println("Not sorted " + list);
+
         // сортировка по возрастанию - по умолчанию
         Collections.sort(list);
         System.out.println("Ascending " + list);
+
         //сортировка по убыванию, компаратор в обратном порядке
         Collections.sort(list, Comparator.reverseOrder());
         System.out.println("Descending" + list);
@@ -28,5 +30,11 @@ public class ComparatorExample {
         //только по возрастанию
         Collections.sort(list, String::compareTo);
         System.out.println("Ascending" + list);
+
+        //статический метод компаратора comparing
+        Comparator<String> comp = Comparator.comparing(o1 -> o1);
+        list.sort(comp);
+        System.out.println("Ascending" + list);
+
     }
 }

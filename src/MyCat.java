@@ -1,4 +1,4 @@
-public class MyCat {
+public class MyCat implements Comparable<MyCat>{
     int age;
     String name;
     String gender;
@@ -9,18 +9,6 @@ public class MyCat {
         this.gender = gender;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
     @Override
     public String toString() {
         return "MyCat[ "
@@ -28,5 +16,11 @@ public class MyCat {
                 ", name = '" + name + '\'' +
                 ", gender = '" + gender + '\'' +
                 ']';
+    }
+
+    @Override
+    public int compareTo(MyCat o) {
+//        return this.gender.compareTo(o.gender); //наоборот
+        return o.gender.compareTo(this.gender);
     }
 }
