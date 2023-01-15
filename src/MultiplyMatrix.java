@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
@@ -16,43 +20,45 @@ import static java.lang.Math.min;
  */
 
 public class MultiplyMatrix {
-    public static int[][] multiply(int[][] m1, int[][] m2) {
-        int m = m1.length; //число строк первой матрицы
-        int n = m2.length; //число строк второй матрицы равно числу столбцов первой матрицы
-        int l = m2[0].length; //число столбцов второй матрицы
-        int[][] result = new int[m][l];
 
-        for (int j = 0; j < m; j++) {
-            for (int i = 0; i < l; i++) {
-                for (int k = 0; k < n; k++) {
-                    result[j][i] += m1[j][k] * m2[k][i];
+    public static int[][] multiply(int[][] matrix1, int[][] matrix2) {
+
+        int m = matrix1.length; //число строк первой
+        int n = matrix2[0].length; //число столбцов второй
+        int o = matrix2.length; //число строк второй (оно же число столбцов первой)
+        int[][] result = new int[m][n]; // создаем итоговую матрицу,m строк n столбцов
+
+        for (int i = 0; i < m; i++) { //цикл строки первой матрицы
+            for (int j = 0; j < n; j++) { // цикл столбца второй матрицы
+                for (int k = 0; k < o; k++) { // цикл длины второй матрицы
+                    result[i][j] += matrix1[i][k] * matrix2[k][j]; // умножаем первую и вторую матрицу, затем складываем
                 }
             }
         }
-        return result;
+
+        for (int i = 0; i < result.length; i++) { //цикл строки (длина результата в матрице)
+            for (int j = 0; j < result[0].length; j++) { //цикл столбца (длина резельтата в матрице)
+            }
+        }
+        return result; //возвращаем результат
     }
 
     public static void main(String[] args) {
 
+        System.out.println("Test your code here!\n");
+        ArrayList<String> me = new ArrayList<String>();
 
-        int[][] arr1 = {{1,2,3}, {4, 5,6}};
-        int[][] arr2 = {{7, 8}, {9, 10},{11,12}};
+// Get a result of your code
+        int[][] a = {
+                {0, 12345},
+                {4509, 0},
+                {3, 567}};
 
-//        int[][] arr1 = {{3, 5}, {2, 1}};
-//        int[][] arr2 = {{8, 2, 3}, {1, 7, 2}};
+        int[][] b = {
+                {653, 0, 25353},
+                {0, 61, 6}};
 
-        printAll(arr1);
-        printAll(arr2);
-        printAll(multiply(arr1, arr2));
-    }
-
-    public static void printAll(int[][] array) {
-        System.out.println();
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[0].length; j++) {
-                System.out.print(array[i][j] + " ");
-            }
-            System.out.println();
-        }
+        int[][] result = multiply(a, b);
+        System.out.println(Arrays.deepToString(result).replace("],", "]\n"));
     }
 }
